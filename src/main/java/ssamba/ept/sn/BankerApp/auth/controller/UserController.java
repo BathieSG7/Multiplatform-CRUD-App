@@ -1,9 +1,9 @@
 package ssamba.ept.sn.BankerApp.auth.controller;
 
-import com.example.jira.auth.payload.*;
-import com.example.jira.auth.repository.UserRepository;
-import com.example.jira.auth.security.CurrentUser;
-import com.example.jira.auth.security.UserPrincipal;
+import ssamba.ept.sn.BankerApp.auth.payload.*;
+import ssamba.ept.sn.BankerApp.auth.repository.UserRepository;
+import ssamba.ept.sn.BankerApp.auth.security.CurrentUser;
+import ssamba.ept.sn.BankerApp.auth.security.UserPrincipal;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @Api( description="API pour la gestion des utilisateurs.")
 @RestController

@@ -1,6 +1,8 @@
 package ssamba.ept.sn.BankerApp.auth.model;
 
-import com.example.jira.auth.model.audit.DateAudit;
+
+
+import ssamba.ept.sn.BankerApp.auth.model.audit.DateAudit;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

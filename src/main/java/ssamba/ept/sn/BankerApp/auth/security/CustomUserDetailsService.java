@@ -1,13 +1,14 @@
 package ssamba.ept.sn.BankerApp.auth.security;
 
-import com.example.jira.auth.model.User;
-import com.example.jira.auth.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ssamba.ept.sn.BankerApp.auth.model.User;
+import ssamba.ept.sn.BankerApp.auth.repository.UserRepository;
 
 // CustomUserDetailsService charge les données d’un utilisateur en fonction de son nom d’utilisateur (username)
 

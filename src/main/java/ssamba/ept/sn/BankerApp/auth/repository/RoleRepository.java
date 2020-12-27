@@ -1,9 +1,9 @@
 package ssamba.ept.sn.BankerApp.auth.repository;
 
-import com.example.jira.auth.model.Role;
-import com.example.jira.auth.model.RoleName;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import ssamba.ept.sn.BankerApp.auth.model.Role;
+import ssamba.ept.sn.BankerApp.auth.model.RoleName;
 
 import java.util.Optional;
 

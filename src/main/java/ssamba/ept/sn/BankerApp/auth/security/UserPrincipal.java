@@ -1,6 +1,6 @@
 package ssamba.ept.sn.BankerApp.auth.security;
 
-import com.example.jira.auth.model.User;
+import ssamba.ept.sn.BankerApp.auth.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

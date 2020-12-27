@@ -41,7 +41,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/auth")
 @Slf4j
-public class AuthController implements CommandLineRunner {
+public class AuthController implements CommandLineRunner  {
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -168,9 +168,12 @@ public class AuthController implements CommandLineRunner {
         }
     }
 
+
     // @Override
     public void run(String... args) {
        registerAdmin();
     }
+
+
 
 }

@@ -1,8 +1,8 @@
 package ssamba.ept.sn.BankerApp.auth.config;
 
-import com.example.jira.auth.security.CustomUserDetailsService;
-import com.example.jira.auth.security.JwtAuthenticationEntryPoint;
-import com.example.jira.auth.security.JwtAuthenticationFilter;
+import ssamba.ept.sn.BankerApp.auth.security.CustomUserDetailsService;
+import ssamba.ept.sn.BankerApp.auth.security.JwtAuthenticationEntryPoint;
+import ssamba.ept.sn.BankerApp.auth.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

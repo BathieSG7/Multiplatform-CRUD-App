@@ -45,9 +45,9 @@
 
 		<!-- hibernate-validator -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>5.4.0.Final</version>
+			<version>7.0.0.Final</version>
 		</dependency>
 
 		<!-- SWAGGER FOR DOCUMENTATION -->

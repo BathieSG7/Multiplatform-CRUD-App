@@ -163,7 +163,6 @@ public class AuthController implements CommandLineRunner  {
                     .orElseThrow(() -> new AppException("Admin Role not set."));
 
             admin.setRoles(Collections.singleton(userRole));
-
             userRepository.save(admin);
         }
     }

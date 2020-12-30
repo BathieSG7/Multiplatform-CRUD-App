@@ -25,12 +25,12 @@ public class Compte {
 
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
     private Client client ;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "code")
     @JsonIdentityReference(alwaysAsId = true)
     private Agence agence ;

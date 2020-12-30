@@ -12,7 +12,6 @@ import ssamba.ept.sn.BankerApp.dto.CompteDto;
 import ssamba.ept.sn.BankerApp.model.Agence;
 import ssamba.ept.sn.BankerApp.model.Client;
 import ssamba.ept.sn.BankerApp.model.Compte;
-import ssamba.ept.sn.BankerApp.model.ObjectKey;
 import ssamba.ept.sn.BankerApp.repository.AgenceRepository;
 import ssamba.ept.sn.BankerApp.repository.ClientRepository;
 import ssamba.ept.sn.BankerApp.repository.CompteRepository;

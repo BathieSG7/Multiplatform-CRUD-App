@@ -103,6 +103,15 @@ public class CompteController {
         return ResponseEntity.created(location).body(compteAdded);
     }
 */
+   @PutMapping("/compte/{id}")
+   public ResponseEntity<?> updateAgence(@PathVariable(value = "id") int compteId,@Valid @RequestBody CompteDto compte) {
+       Compte existingCompte= compteRepository.findById(compteId)
+               .orElseThrow(() -> new ResourceNotFoundException("Le Code",compteId));
+       existingCompte.setDecouvert(compte.getDecouvert());
+       existingCompte.setSolde(compte.getSolde());
+      // compte = compteRepository.save(existingCompte);
+       return ResponseEntity.ok().body(compteRepository.save(existingCompte)) ;
+   }
 
     @DeleteMapping("/compte/{id}")
     public ResponseEntity<?> deleteCompte(@PathVariable(value = "id") int id) {

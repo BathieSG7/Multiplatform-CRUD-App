@@ -31,7 +31,7 @@ public class Agence {
 
     @OneToMany(
             mappedBy = "agence",
-            //cascade = CascadeType.ALL,
+            cascade = CascadeType.ALL,
             orphanRemoval = true
     )
 

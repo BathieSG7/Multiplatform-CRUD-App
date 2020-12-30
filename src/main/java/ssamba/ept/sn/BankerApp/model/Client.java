@@ -34,7 +34,7 @@ public class Client {
 
     @OneToMany(
             mappedBy = "client",
-           // cascade = CascadeType.ALL,
+            cascade = CascadeType.ALL,
             orphanRemoval = true
     )
 

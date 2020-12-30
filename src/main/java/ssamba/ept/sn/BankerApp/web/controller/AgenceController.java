@@ -4,10 +4,16 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ssamba.ept.sn.BankerApp.model.Agence;
+import ssamba.ept.sn.BankerApp.model.Client;
 import ssamba.ept.sn.BankerApp.repository.AgenceRepository;
 import ssamba.ept.sn.BankerApp.web.exceptions.ResourceNotFoundException;
 
@@ -32,8 +38,15 @@ public class AgenceController {
                 .orElseThrow(()-> new ResourceNotFoundException("Le agence",id));
     }
     @GetMapping("/agence/all")
-    public List<Agence> getAllAgences() {
-        return agenceRepository.findAll();
+    public Page<Agence> getAllAgences(
+            @PageableDefault(page = 0, size = 5)
+            @SortDefault.SortDefaults({
+                    @SortDefault(sort = "code", direction = Sort.Direction.DESC),
+                    // @SortDefault(sort = "id", direction = Sort.Direction.ASC)
+            }) Pageable pageable
+           // @RequestParam(value = "state", required = false) final String state //for filtering purpose
+    ) {
+            return agenceRepository.findAll(pageable);
     }
 
     @PostMapping(path = "/agence/new")
@@ -49,6 +62,17 @@ public class AgenceController {
                 .buildAndExpand(agenceAdded.getCode())
                 .toUri();
         return ResponseEntity.created(location).body(agenceAdded);
+    }
+
+    @PutMapping("/agence/{id}")
+    public ResponseEntity<?> updateAgence(@PathVariable(value = "id") int agenceCode,@Valid @RequestBody Agence agence) {
+        Agence existingAgence= agenceRepository.findById(agenceCode)
+                .orElseThrow(() -> new ResourceNotFoundException("Le Code",agenceCode));
+        existingAgence.setNom(agence.getNom());
+        existingAgence.setAdresse(agence.getAdresse());
+        existingAgence.setTelephone(agence.getTelephone());
+        agence = agenceRepository.save(existingAgence);
+        return ResponseEntity.ok().body(agence) ;
     }
 
     @DeleteMapping("/agence/{id}")

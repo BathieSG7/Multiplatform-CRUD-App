@@ -5,6 +5,11 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -41,17 +46,24 @@ public class CompteController {
                 .findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Le compte",id));
     }
+
+
+
     @GetMapping("/compte/all")
-    public List<Compte> getAllComptes() {
-        return compteRepository.findAll();
+    public Page<Compte> getAllComptes(@PageableDefault(page = 0, size = 5)
+                                          @SortDefault.SortDefaults({
+                                                  @SortDefault(sort = "id", direction = Sort.Direction.DESC),
+                                                  // @SortDefault(sort = "id", direction = Sort.Direction.ASC)
+                                          }) Pageable pageable) {
+        return compteRepository.findAll(pageable);
     }
 
 
 
-    @PostMapping(path = "/compte/new")
+    @PostMapping(path = "/compte/")
     public ResponseEntity addCompte(@Valid @RequestBody CompteDto compteDto) {
-        Optional<Agence> agence = agenceRepository.findById(compteDto.getAgenceCode()) ;
-        Optional<Client> client = clientRepository.findById(compteDto.getClientId() ) ;
+        Optional<Agence> agence = agenceRepository.findById(compteDto.getAgence()) ;
+        Optional<Client> client = clientRepository.findById(compteDto.getClient() ) ;
 
         if(agence.isPresent() && client.isPresent()){
             Agence currAgence = agenceRepository.saveAndFlush(agence.get());

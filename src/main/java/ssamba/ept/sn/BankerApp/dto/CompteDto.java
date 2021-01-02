@@ -7,6 +7,6 @@ import lombok.*;
 public class CompteDto {
     private double solde;
     private double decouvert;
-    private int clientId ;
-    private int agenceCode ;
+    private int client ;
+    private int agence ;
 }

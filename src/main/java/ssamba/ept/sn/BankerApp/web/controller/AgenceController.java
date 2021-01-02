@@ -49,7 +49,7 @@ public class AgenceController {
             return agenceRepository.findAll(pageable);
     }
 
-    @PostMapping(path = "/agence/new")
+    @PostMapping(path = "/agence/")
     public ResponseEntity<Agence> addAgence(@Valid @RequestBody Agence agence) {
 
         Agence agenceAdded =  agenceRepository.save(agence);

@@ -1,6 +1,11 @@
 package ssamba.ept.sn.BankerApp.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -33,11 +38,18 @@ public class ClientController {
                 .orElseThrow(()-> new ResourceNotFoundException("Le client",id));
     }
     @GetMapping("/client/all")
-    public List<Client> getAllClients() {
-        return clientRepository.findAll();
+    public Page<Client> getAllClients(@PageableDefault(page = 0, size = 5)
+                                          @SortDefault.SortDefaults({
+                                                  @SortDefault(sort = "id", direction = Sort.Direction.DESC),
+                                                  // @SortDefault(sort = "id", direction = Sort.Direction.ASC)
+                                          }) Pageable pageable) {
+        return clientRepository.findAll(pageable);
     }
 
-    @PostMapping(path = "/client/new")
+    // @ApiOperation(value = "Récupère la liste des comptes d'un client grâce à son ID à condition que celui-ci existe!")
+    // @GetMapping(path = "/compte/client/{id}")
+
+    @PostMapping(path = "/client/")
     public ResponseEntity<Client> addClient(@Valid @RequestBody Client client) {
         /*client.getComptes().stream().flatMap(compte -> {
            // System.out.println(compte);

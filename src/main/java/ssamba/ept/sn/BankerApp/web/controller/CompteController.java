@@ -41,14 +41,14 @@ public class CompteController {
                 .findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Le compte",id));
     }
-    @GetMapping("/compte/all")
+    @GetMapping("/compte/")
     public List<Compte> getAllComptes() {
         return compteRepository.findAll();
     }
 
 
 
-    @PostMapping(path = "/compte/new")
+    @PostMapping(path = "/compte/")
     public ResponseEntity addCompte(@Valid @RequestBody CompteDto compteDto) {
         Optional<Agence> agence = agenceRepository.findById(compteDto.getAgenceCode()) ;
         Optional<Client> client = clientRepository.findById(compteDto.getClientId() ) ;

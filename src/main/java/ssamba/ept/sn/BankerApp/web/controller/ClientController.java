@@ -32,12 +32,12 @@ public class ClientController {
                 .findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Le client",id));
     }
-    @GetMapping("/client/all")
+    @GetMapping("/client/")
     public List<Client> getAllClients() {
         return clientRepository.findAll();
     }
 
-    @PostMapping(path = "/client/new")
+    @PostMapping(path = "/client/")
     public ResponseEntity<Client> addClient(@Valid @RequestBody Client client) {
         /*client.getComptes().stream().flatMap(compte -> {
            // System.out.println(compte);

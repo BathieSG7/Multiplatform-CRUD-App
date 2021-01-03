@@ -40,13 +40,13 @@ public class AgenceController {
 
 
 
-    @GetMapping("/agence/all")
+    @GetMapping("/agence/")
     public List<Agence> getAllAgences(
     ) {
             return agenceRepository.findAll();
     }
 
-    @PostMapping(path = "/agence/new")
+    @PostMapping(path = "/agence/")
     public ResponseEntity<Agence> addAgence(@Valid @RequestBody Agence agence) {
 
         Agence agenceAdded =  agenceRepository.save(agence);

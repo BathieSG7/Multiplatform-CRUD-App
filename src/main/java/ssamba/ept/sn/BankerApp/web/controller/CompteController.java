@@ -24,7 +24,6 @@ import ssamba.ept.sn.BankerApp.web.exceptions.ResourceNotFoundException;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -49,7 +48,7 @@ public class CompteController {
 
 
 
-    @GetMapping("/compte/all")
+    @GetMapping("/compte/")
     public Page<Compte> getAllComptes(@PageableDefault(page = 0, size = 5)
                                           @SortDefault.SortDefaults({
                                                   @SortDefault(sort = "id", direction = Sort.Direction.DESC),
@@ -83,38 +82,6 @@ public class CompteController {
     }
 
 
-   /* @PostMapping(path = "/compte/new")
-    public ResponseEntity<Compte> addCompte(@Valid @RequestBody ObjectKey objectKey) {
-
-        Agence currAgence = compte.getAgence();
-        Optional<Agence> agence = agenceRepository.findById(currAgence.getCode()) ;
-        if(agence.isPresent()){
-            currAgence = agenceRepository.saveAndFlush(agence.get());
-        }else{
-            currAgence = agenceRepository.saveAndFlush(currAgence);
-        }
-
-        Client currClient = compte.getClient();
-        Optional<Client> client = clientRepository.findById(currClient.getId()) ;
-        if(client.isPresent()){
-            currClient = clientRepository.saveAndFlush(client.get());
-        }else{
-            currClient = clientRepository.saveAndFlush(currClient);
-        }
-
-        Compte compteAdded =  compteRepository.saveAndFlush(compte.toBuilder().agence(currAgence).client(currClient).build());
-
-        if (compteAdded == null)
-            return ResponseEntity.noContent().build();
-
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(compteAdded.getId())
-                .toUri();
-        return ResponseEntity.created(location).body(compteAdded);
-    }
-*/
    @PutMapping("/compte/{id}")
    public ResponseEntity<?> updateAgence(@PathVariable(value = "id") int compteId,@Valid @RequestBody CompteDto compte) {
        Compte existingCompte= compteRepository.findById(compteId)

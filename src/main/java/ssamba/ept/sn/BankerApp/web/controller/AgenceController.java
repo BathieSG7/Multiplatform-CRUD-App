@@ -37,7 +37,7 @@ public class AgenceController {
                 .findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Le agence",id));
     }
-    @GetMapping("/agence/all")
+    @GetMapping("/agence/")
     public Page<Agence> getAllAgences(
             @PageableDefault(page = 0, size = 5)
             @SortDefault.SortDefaults({

@@ -23,7 +23,7 @@ spring:
               max-page-size : 2000
 
 server:
-  port: 9090
+  port: 8080
 
 # JWT (Token for auth)
 app:

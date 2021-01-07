@@ -38,7 +38,7 @@ public class ClientController {
                 .orElseThrow(()-> new ResourceNotFoundException("Le client",id));
     }
     @GetMapping("/client/")
-    public Page<Client> getAllClients(@PageableDefault(page = 0, size = 5)
+    public Page<Client> getAllClients(@PageableDefault(page = 0)
                                           @SortDefault.SortDefaults({
                                                   @SortDefault(sort = "id", direction = Sort.Direction.DESC),
                                                   // @SortDefault(sort = "id", direction = Sort.Direction.ASC)

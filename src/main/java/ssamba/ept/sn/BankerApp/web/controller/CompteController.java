@@ -49,7 +49,7 @@ public class CompteController {
 
 
     @GetMapping("/compte/")
-    public Page<Compte> getAllComptes(@PageableDefault(page = 0, size = 5)
+    public Page<Compte> getAllComptes(@PageableDefault(page = 0)
                                           @SortDefault.SortDefaults({
                                                   @SortDefault(sort = "id", direction = Sort.Direction.DESC),
                                                   // @SortDefault(sort = "id", direction = Sort.Direction.ASC)

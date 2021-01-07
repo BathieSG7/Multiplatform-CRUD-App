@@ -39,7 +39,7 @@ public class AgenceController {
     }
     @GetMapping("/agence/")
     public Page<Agence> getAllAgences(
-            @PageableDefault(page = 0, size = 5)
+            @PageableDefault(page = 0)
             @SortDefault.SortDefaults({
                     @SortDefault(sort = "code", direction = Sort.Direction.DESC),
                     // @SortDefault(sort = "id", direction = Sort.Direction.ASC)
